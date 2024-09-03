@@ -12,14 +12,14 @@ exports.ox_inventory:setPlayerInventory(player, data)
 ```
 
 - player: `table`
-  - source: `number`
-  - identifier: `string`
-  - name: `string`
-  - groups?: `table`
-  - sex?: `string`
-  - dateofbirth?: `string`
+    - source: `number`
+    - identifier: `string`
+    - name: `string`
+    - groups?: `table`
+    - sex?: `string`
+    - dateofbirth?: `string`
 - data?: `table`
-  - If not provided will load player's inventory data from the db.
+    - If not provided will load player's inventory data from the db.
 
 ## forceOpenInventory
 
@@ -32,18 +32,18 @@ exports.ox_inventory:forceOpenInventory(playerId, invType, data)
 
 - playerId: `number`
 - invType: `string`
-  - `'player'`
-  - `'stash'`
-  - `'container'`
-  - `'drop'`
-  - `'glovebox'`
-  - `'trunk'`
-  - `'dumpster'`
+    - `'player'`
+    - `'stash'`
+    - `'container'`
+    - `'drop'`
+    - `'glovebox'`
+    - `'trunk'`
+    - `'dumpster'`
 - data: `number` or `string` or `table`
 
 <Tabs items={["Player", "Stash"]}>
-  <Tab>
-    Open the target player's inventory.
+<Tab>
+Open the target player's inventory.
 
     ```lua
     exports.ox_inventory:forceOpenInventory(1, 'player', 3)
@@ -123,18 +123,18 @@ exports.ox_inventory:AddItem(inv, item, count, metadata, slot, cb)
 ```
 
 - inv: `table` or `string` or `number`
-  - The inventory's unique id, or a table with the id and owner.
-    - playerId: `1`
-    - inventoryId: `gloveVGH283`
-    - `{ id = 'personallocker', owner = 'license:xxxxxx'}`
+    - The inventory's unique id, or a table with the id and owner.
+        - playerId: `1`
+        - inventoryId: `gloveVGH283`
+        - `{ id = 'personallocker', owner = 'license:xxxxxx'}`
 - item: `string`
-  - The name of the item to add to the target.
+    - The name of the item to add to the target.
 - count: `number`
-  - The number of items to add.
+    - The number of items to add.
 - metadata?: `table` or `string`
-  - A table of unique data to attach to the item object. A string will create a table with the "type" field.
+    - A table of unique data to attach to the item object. A string will create a table with the "type" field.
 - slot?: `number`
-  - A specific slot to add the item to. If the slot is invalid, the first available slot will be used instead.
+    - A specific slot to add the item to. If the slot is invalid, the first available slot will be used instead.
 - cb?: function(success: `boolean`, response?: `string`)
 
 If used for glovebox, trunk or stash you must first check the inventory is loaded with [GetInventory](./GetInventory.md)
@@ -182,20 +182,20 @@ exports.ox_inventory:RemoveItem(inv, item, count, metadata, slot, ignoreTotal)
 ```
 
 - inv: `table` or `string` or `number`
-  - The inventory's unique id, or a table with the id and owner.
-    - playerId: `1`
-    - inventoryId: `gloveVGH283`
-    - `{ id = 'personallocker', owner = 'license:xxxxxx'}`
+    - The inventory's unique id, or a table with the id and owner.
+        - playerId: `1`
+        - inventoryId: `gloveVGH283`
+        - `{ id = 'personallocker', owner = 'license:xxxxxx'}`
 - item: `string`
-  - The name of the item to remove from the target.
+    - The name of the item to remove from the target.
 - count: `number`
-  - The number of items to remove.
+    - The number of items to remove.
 - metadata?: `table` or `string`
-  - Only remove items with matching metadata properties.
+    - Only remove items with matching metadata properties.
 - slot?: `number`
-  - A specific slot to remove the item from. If the slot is invalid, the first available slot will be used instead.
+    - A specific slot to remove the item from. If the slot is invalid, the first available slot will be used instead.
 - ignoreTotal?: `boolean`
-  - Removes as many items as possible up to count.
+    - Removes as many items as possible up to count.
 
 Returns success: `boolean`, response: `string?`.
 
@@ -223,9 +223,9 @@ exports.ox_inventory:GetItem(inv, item, metadata, returnsCount)
 
 - inv: `table` or `string` or `number`
 - item: `table` or `string`
-  - Can be items array.
+    - Can be items array.
 - metadata?: `any`
-  - Only returns the count of items that strictly match the given metadata.
+    - Only returns the count of items that strictly match the given metadata.
 - returnsCount?: `boolean`
 
 If `returnsCount` is set to true, the returned value will be the `count` based on
@@ -284,10 +284,10 @@ exports.ox_inventory:CanCarryItem(inv, item, count, metadata)
 
 - inv: `table` or `string` or `number`
 - item `table` or `string`
-  - Can be array of items.
+    - Can be array of items.
 - count: `number`
 - metadata?: `table` or `string`
-  - If metadata is passed as string then `metadata.type` will be checked.
+    - If metadata is passed as string then `metadata.type` will be checked.
 
 <br />
 <u>**Example**</u>
@@ -311,7 +311,7 @@ exports.ox_inventory:CanCarryAmount(inv, item)
 
 - inv: `table` or `string` or `number`
 - item: `table` or `string`
-  - Can be array to check multiple items.
+    - Can be array to check multiple items.
 
 <br />
 <u>**Example**</u>
@@ -400,7 +400,7 @@ exports.ox_inventory:GetItemCount(inv, itemName, metadata, strict)
 - itemName: `string`
 - metadata?: `table`
 - strict?: `boolean`
-  - Strictly match metadata properties, otherwise use partial matching.
+    - Strictly match metadata properties, otherwise use partial matching.
 
 Return:
 - itemCount: `number`
@@ -477,7 +477,7 @@ exports.ox_inventory:GetSlotIdWithItem(inv, itemName, metadata, strict)
 - itemName: `string`
 - metadata?: `table`
 - strict?: `boolean`
-  - Strictly match metadata properties, otherwise use partial matching.
+    - Strictly match metadata properties, otherwise use partial matching.
 
 Return:
 - slotId: `number?`
@@ -494,7 +494,7 @@ exports.ox_inventory:GetSlotIdsWithItem(inv, itemName, metadata, strict)
 - itemName: `string`
 - metadata?: `table`
 - strict?: `boolean`
-  - Strictly match metadata properties, otherwise use partial matching.
+    - Strictly match metadata properties, otherwise use partial matching.
 
 Return:
 - slotIds: `number[]?`
@@ -511,7 +511,7 @@ exports.ox_inventory:GetSlotWithItem(inv, itemName, metadata, strict)
 - itemName: `string`
 - metadata?: `table`
 - strict?: `boolean`
-  - Strictly match metadata properties, otherwise use partial matching.
+    - Strictly match metadata properties, otherwise use partial matching.
 
 Return:
 - slotData: `table?`
@@ -528,7 +528,7 @@ exports.ox_inventory:GetSlotsWithItem(inv, itemName, metadata, strict)
 - itemName: `string`
 - metadata?: `table`
 - strict?: `boolean`
-  - Strictly match metadata properties, otherwise use partial matching.
+    - Strictly match metadata properties, otherwise use partial matching.
 
 Return:
 - slotsData: `table[]?`
@@ -630,6 +630,16 @@ exports.ox_inventory:GetInventoryItems(inv, owner)
 local playerItems = exports.ox_inventory:GetInventoryItems(source)
 ```
 
+## InspectInventory
+
+Inspect the player their inventory. You will not be able to modify the inventory.
+
+```lua
+exports.ox_inventory:InspectInventory(target, source)
+```
+- target: `number`
+- source: `number`
+
 ## ConfiscateInventory
 
 Clears a player's inventory and saves it to a stash.
@@ -691,19 +701,19 @@ exports.ox_inventory:RegisterStash(id, label, slots, maxWeight, owner, groups, c
 ```
 
 - id: `string` or `number`
-  - Stash identifier when loading from the database.
+    - Stash identifier when loading from the database.
 - label: `string`
-  - Display name when inventory is open.
+    - Display name when inventory is open.
 - slots: `number`
 - maxWeight: `number`
 - owner: `string` or `boolean` or `nil`
-  - `string`: Can only access the stash linked to the owner.
-  - `true`: Each player has a unique stash but can request other player's stashes.
-  - `nil`: Always shared.
+    - `string`: Can only access the stash linked to the owner.
+    - `true`: Each player has a unique stash but can request other player's stashes.
+    - `nil`: Always shared.
 - groups: `table`
-  - Table of player groups (jobs) able to access the stash.
-  - Table of group names where the numeric value is the minimum grade required.
-  - `{['police'] = 0, ['ambulance'] = 2}`
+    - Table of player groups (jobs) able to access the stash.
+    - Table of group names where the numeric value is the minimum grade required.
+    - `{['police'] = 0, ['ambulance'] = 2}`
 - coords?: `vector3` or `vector3[]`
 
 <Callout>
@@ -723,20 +733,20 @@ exports.ox_inventory:CreateTemporaryStash(properties)
 ```
 
 - properties: `table`
-  - label: `string`
-  - slots: `number`
-  - maxWeight: `number`
-  - owner?: `string` `number` or `boolean`
-    - `string`: Can only access the stash linked to the owner.
-    - `true`: Each player has a unique stash but can request other player's stashes.
-    - The inventory is always shared if `false` or `nil`.
-  - groups?: `table<string, number>`
-    - Table of group names (e.g. jobs) where the numeric value is the minimum grade required.
-    - `{['police'] = 0, ['ambulance'] = 2}`
-  - coords?: `vector3`
-    - Stash can only be accessed while nearby.
-  - items?: `{ [number]: string, [number]: number, [number]?: table }[]`
-    - An array of tables, containing a sequence of itemName, count, metadata.
+    - label: `string`
+    - slots: `number`
+    - maxWeight: `number`
+    - owner?: `string` `number` or `boolean`
+        - `string`: Can only access the stash linked to the owner.
+        - `true`: Each player has a unique stash but can request other player's stashes.
+        - The inventory is always shared if `false` or `nil`.
+    - groups?: `table<string, number>`
+        - Table of group names (e.g. jobs) where the numeric value is the minimum grade required.
+        - `{['police'] = 0, ['ambulance'] = 2}`
+    - coords?: `vector3`
+        - Stash can only be accessed while nearby.
+    - items?: `{ [number]: string, [number]: number, [number]?: table }[]`
+        - An array of tables, containing a sequence of itemName, count, metadata.
 
 Return:
 - inventoryId: `string`
@@ -769,9 +779,9 @@ exports.ox_inventory:CustomDrop(prefix, items, coords, slots, maxWeight, instanc
 
 - prefix: `string`
 - items: `table`
-  - name: `string`
-  - count: `number`
-  - metadata?: `table`
+    - name: `string`
+    - count: `number`
+    - metadata?: `table`
 - coords: `vector3`
 - slots?: `number`
 - maxWeight?: `number`
